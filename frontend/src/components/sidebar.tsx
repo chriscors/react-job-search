@@ -13,16 +13,21 @@ import { FontAwesomeSvgIcon } from 'react-fontawesome-svg-icon';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 
-export default function Sidebar() {
-  const [activeCategory, setActiveCategory] = useState(null)
+
+interface SidebarProps {
+  activeCategory: string | null
+  setActiveCategory: React.Dispatch<React.SetStateAction<null | string>>
+}
+const Sidebar: FC<SidebarProps> = ({activeCategory, setActiveCategory}) => {
+  
   return (
     <Box sx={{ height: '100vh', maxWidth: 200, overflowWrap: 'break-word', bgcolor: 'background.paper', boxShadow: 1}}>
       <nav aria-label='main sidebar'>
         <List>
-          <MenuItem text = "React" icon = {faReact} />
-          <MenuItem text = "Python/Django" icon = {faReact} />
-          <MenuItem text = "Node.js" icon = {faNode} />
-          <MenuItem text = "Ruby/Rails" icon = {faGem} />
+          <MenuItem text = "React" icon = {faReact} activeCategory={activeCategory} setActiveCategory={setActiveCategory} />
+          <MenuItem text="Python/Django" icon={faPython} activeCategory={activeCategory} setActiveCategory={setActiveCategory}/>
+          <MenuItem text="Node.js" icon={faNode} activeCategory={activeCategory} setActiveCategory={setActiveCategory}/>
+          <MenuItem text="Ruby/Rails" icon={faGem} activeCategory={activeCategory} setActiveCategory={setActiveCategory}/>
         </List>
       </nav>
 
@@ -33,18 +38,19 @@ export default function Sidebar() {
 
 interface MenuProps {
   text: string;
-  icon: IconProp
+  icon: IconProp;
+  activeCategory: string | null
+  setActiveCategory: React.Dispatch<React.SetStateAction<null | string>>
 }
  
-const MenuItem: FC<MenuProps> = ({ text, icon }) => {
-  function handleClick(
-    event: React.MouseEvent,
-  ) {
+const MenuItem: FC<MenuProps> = ({ text, icon, activeCategory, setActiveCategory }) => {
+  function handleClick() {
+    setActiveCategory(text)
   }
 
   return (<>
           <ListItem disablePadding>
-            <ListItemButton onClick={(e) => handleClick(e)}>
+            <ListItemButton onClick={handleClick} selected={activeCategory===text}>
               <ListItemIcon>
                 <FontAwesomeIcon icon = {icon} />
               </ListItemIcon>
@@ -53,3 +59,5 @@ const MenuItem: FC<MenuProps> = ({ text, icon }) => {
           </ListItem>
   </>);
 }
+
+export default Sidebar;
