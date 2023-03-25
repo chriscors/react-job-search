@@ -1,1 +1,9 @@
+.content {
+  display: flex;
+}
 
+.listings {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}

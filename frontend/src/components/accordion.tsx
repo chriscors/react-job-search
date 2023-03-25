@@ -1,65 +1,67 @@
 import { FC, useEffect, useState } from 'react';
-import Box from '@mui/material/Box';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faNode, faPython, faReact} from '@fortawesome/free-brands-svg-icons'
-import { faGem } from '@fortawesome/free-regular-svg-icons';
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
-import { defineConfig, loadEnv } from 'vite';
 
 
 interface AccordionProps {
   activeCategory: string | null
-  setActiveCategory: React.Dispatch<React.SetStateAction<null | string>>
+  //setActiveCategory: React.Dispatch<React.SetStateAction<null | string>>
 }
-const JobAccordion: FC<AccordionProps> = ({ activeCategory, setActiveCategory }) => {
+const JobAccordion: FC<AccordionProps> = ({ activeCategory}) => {
+  const [jobs, setJobs] = useState<null | Array<object>>()
   
   useEffect(() => {
-    const BASE = new URL("https://findwork.dev/api/jobs/")
+    const BASE = new URL("https://proxy-findwork-api.glitch.me/api/jobs/")
     if (activeCategory) {
-      BASE.searchParams.append('keyword', activeCategory)
-      //Other params like location etc
-
+      BASE.searchParams.append('search', activeCategory)
     }
-    console.log(import.meta.env.VITE_FINDWORK_API_KEY);
-    
 
     axios.get(BASE.href, {
       headers: {
         Authorization: `Token ${import.meta.env.VITE_FINDWORK_API_KEY}`,
-        "Content-Type": "application/x-www-form-urlencoded",
-        "Accept": "*/*",
-        "user-agent": "insomnia/2023.1.0"
       }
+    }).then((response) => {
+      console.log(response.data);
+      let arr = response.data.results
+      setJobs([...arr])
+      
+      
     })
+    
+  
   }, [activeCategory])
   
   
-  return (
-    <>
-      {/* Map the results of the axios */}
-    </>
-  )
+  if (jobs) {
+    
+    return (
+      <>
+
+        {jobs.map((job) => 
+          <JobListing job={job} />
+        )}
+      </>
+    )
+  }
 }
 
 
-interface ListingProps {
-  activeCategory: string | null
-  setActiveCategory: React.Dispatch<React.SetStateAction<null | string>>
+interface JobListingProps {
+  job: any
 }
-const JobListing = () => {
+const JobListing: FC<JobListingProps> = ({job}) => {
   
   return (
       <Accordion>
         <AccordionSummary
           expandIcon={<FontAwesomeIcon icon={faCaretDown} />}>
-          <Typography></Typography>
+        <Typography>{ job.role }</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography></Typography>
