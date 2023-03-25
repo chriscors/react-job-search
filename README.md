@@ -118,3 +118,25 @@ If you include a "go to listing" button, it can take the user to the job listing
 - Find a way to cache an API response so that you don't have to make the same exact API call multiple times in a row.
 - Create a form to allow users to do custom keyword searches not provided in the tabs.
 - Allow a user to bookmark job listings and save them using local storage. They should then be able to see a list of their bookmarked listings and delete listings they no longer want.
+
+
+
+NOTES:
+- Sidebar click triggers API call with keywords (can have additional filter options if I want later)
+  - Do i need a useeffect in there? Technically i think i could axios in the handleclick - or I could useeffect seperatesly
+    - Do i want to do the new Use?
+    - Ok ight so basic load of page causes render so i shoudl probably DRY and do all in the useeffect
+    - Put a loading sign whule loading
+  - Map out the results using an object map to restructure my own object
+  - Put it in an accordian
+    - I dont think i need multiple pages here unless i want to do a post request? KISS
+
+- On the accordian dropdown map - 
+  - Do a new axios call within the (accordia item?)
+    - I jyst need them to have seperate components
+    - I could close other components on click if i want by using a single === active on the accord or allow any to be open
+
+- Put up a 200 VH header
+  - Put up list header
+
+- This all sounds p doable
