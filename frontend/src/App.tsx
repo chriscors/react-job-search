@@ -2,7 +2,7 @@ import { useState } from 'react'
 import './App.css'
 import Header from './components/header'
 import Sidebar from './components/sidebar'
-import Accordion from "./components/accordion";
+import JobAccordion from "./components/accordion";
 
 function App() {
   const [activeCategory, setActiveCategory] = useState<null | string>(null)
@@ -11,7 +11,7 @@ function App() {
     <div className="App">
       <Header />
       <Sidebar activeCategory={activeCategory} setActiveCategory={setActiveCategory} />
-      <Sidebar activeCategory={activeCategory} setActiveCategory={setActiveCategory} />
+      <JobAccordion activeCategory={activeCategory} setActiveCategory={setActiveCategory} />
     </div>
   )
 }
