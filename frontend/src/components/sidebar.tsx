@@ -12,6 +12,13 @@ import { FontAwesomeSvgIcon } from 'react-fontawesome-svg-icon';
 
 
 export default function MenuBar() {
+  function handleClick(
+    event: React.MouseEvent,
+    index: number,
+  ) {
+  
+}
+
   return (
     <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
       <nav aria-label='main sidebar'>
