@@ -10,8 +10,12 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Sidebar activeCategory={activeCategory} setActiveCategory={setActiveCategory} />
-      <JobAccordion activeCategory={activeCategory} setActiveCategory={setActiveCategory} />
+      <div className="content">
+        <Sidebar activeCategory={activeCategory} setActiveCategory={setActiveCategory} />
+        <div className="listings">
+          <JobAccordion activeCategory={activeCategory} />
+        </div>
+      </div>
     </div>
   )
 }

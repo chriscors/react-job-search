@@ -1,6 +1,6 @@
 import { faCodeBranch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Paper } from "@mui/material";
+import Paper from "@mui/material/Paper";
 import '/src/styles/header.css'
 
 
