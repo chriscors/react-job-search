@@ -9,7 +9,6 @@ import ListItemText from '@mui/material/ListItemText';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faNode, faPython, faReact} from '@fortawesome/free-brands-svg-icons'
 import { faGem } from '@fortawesome/free-regular-svg-icons';
-import { FontAwesomeSvgIcon } from 'react-fontawesome-svg-icon';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 
