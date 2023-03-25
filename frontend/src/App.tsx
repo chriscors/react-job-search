@@ -2,6 +2,7 @@ import { useState } from 'react'
 import './App.css'
 import Header from './components/header'
 import Sidebar from './components/sidebar'
+import Accordion from "./components/accordion";
 
 function App() {
   const [activeCategory, setActiveCategory] = useState<null | string>(null)
