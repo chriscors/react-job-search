@@ -11,7 +11,7 @@ import { faGem } from '@fortawesome/free-regular-svg-icons';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
-
+import { defineConfig, loadEnv } from 'vite';
 
 
 interface AccordionProps {
@@ -21,11 +21,21 @@ interface AccordionProps {
 const JobAccordion: FC<AccordionProps> = ({ activeCategory, setActiveCategory }) => {
   
   useEffect(() => {
-    let URL = null;
+    const BASE = new URL("https://findwork.dev/api/jobs/")
+    if (activeCategory) {
+      BASE.searchParams.append('keyword', activeCategory)
+      //Other params like location etc
 
-    axios.get(URL, {
+    }
+    console.log(import.meta.env.VITE_FINDWORK_API_KEY);
+    
+
+    axios.get(BASE.href, {
       headers: {
-        Authorization: `Token ${import.meta.env.VITE_FINDWORK_API_KEY}`
+        Authorization: `Token ${import.meta.env.VITE_FINDWORK_API_KEY}`,
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Accept": "*/*",
+        "user-agent": "insomnia/2023.1.0"
       }
     })
   }, [activeCategory])
@@ -58,6 +68,7 @@ const JobListing = () => {
   )
 }
 
+export default JobAccordion
 // return (
 //   <Box sx={{ height: '100vh', maxWidth: 200, overflowWrap: 'break-word', bgcolor: 'background.paper', boxShadow: 1}}>
 //     <nav aria-label='main sidebar'>
