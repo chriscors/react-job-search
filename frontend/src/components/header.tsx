@@ -7,9 +7,9 @@ import '/src/styles/header.css'
 export default function Header() { 
   return (
     <>  <Paper elevation={3}>
-    <header>
-        <h1><FontAwesomeIcon icon={faCodeBranch} /> Job Search</h1>
-    </header>
-      </Paper></>
+          <header>
+              <h1><FontAwesomeIcon icon={faCodeBranch} /> Job Search</h1>
+          </header>
+        </Paper></>
   )
 }
