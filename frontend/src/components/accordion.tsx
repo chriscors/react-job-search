@@ -47,15 +47,14 @@ const JobAccordion= ({ activeCategory}: {activeCategory: string | null}) => {
   }, [activeCategory])
   
   
-  if (loading) {
+  if (loading || !jobs) {
     return (
       <div className="centered-children">
         <h1><FontAwesomeIcon icon={faSpinner} spin /></h1>
       </div>
     )
 
-  } else if (jobs) {
-    
+  } 
     return (
       <><AccordionHeader />
         {jobs.map((job) => 
@@ -64,7 +63,7 @@ const JobAccordion= ({ activeCategory}: {activeCategory: string | null}) => {
       </>
     )
   }
-}
+
 
 
 interface JobListingProps {
