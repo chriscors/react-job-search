@@ -10,6 +10,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faNode, faPython, faReact} from '@fortawesome/free-brands-svg-icons'
 import { faGem } from '@fortawesome/free-regular-svg-icons';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { faGlobe } from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -23,6 +24,14 @@ const Sidebar: FC<SidebarProps> = ({activeCategory, setActiveCategory}) => {
     <Box sx={{ height: '100vh', maxWidth: 200, overflowWrap: 'break-word', bgcolor: 'background.paper', boxShadow: 1}}>
       <nav aria-label='main sidebar'>
         <List>
+          <ListItem disablePadding>
+            <ListItemButton onClick={() => setActiveCategory(null)} selected={activeCategory===null}>
+              <ListItemIcon>
+                <FontAwesomeIcon icon = {faGlobe} />
+              </ListItemIcon>
+                <ListItemText primary={"All"}/>
+            </ListItemButton>
+          </ListItem>
           <MenuItem text = "React" icon = {faReact} activeCategory={activeCategory} setActiveCategory={setActiveCategory} />
           <MenuItem text="Python/Django" icon={faPython} activeCategory={activeCategory} setActiveCategory={setActiveCategory}/>
           <MenuItem text="Node.js" icon={faNode} activeCategory={activeCategory} setActiveCategory={setActiveCategory}/>
