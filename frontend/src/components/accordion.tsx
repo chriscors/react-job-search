@@ -12,11 +12,8 @@ import { faCaretDown, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 import parse from 'html-react-parser'
 
-interface AccordionProps {
-  activeCategory: string | null
-  //setActiveCategory: React.Dispatch<React.SetStateAction<null | string>>
-}
-const JobAccordion: FC<AccordionProps> = ({ activeCategory}) => {
+
+const JobAccordion= ({ activeCategory}: {activeCategory: string | null}) => {
   const [jobs, setJobs] = useState<null | Array<object>>()
   const [loading , setLoading] = useState<boolean>(true)
   
