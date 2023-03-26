@@ -1,0 +1,28 @@
+.centered-children {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.expand {
+  padding-left: 1rem;
+}
+
+.tag {
+  list-style: none;
+  padding: 0 7px;
+  border-radius: 15px;
+  background-color: #89deef;
+  margin: 2px 6px 2px 0px;
+}
+
+.tags {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  /* align-content: space-around; */
+  padding: 0;
+  flex-wrap: wrap;
+  margin: 0;
+}
